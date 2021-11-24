@@ -1,27 +1,29 @@
+import {Link} from 'react-router-dom'
 import './post.css'
 
-export default function Post() {
+export default function Post({post}) {
     return (
         <div className="post">
-            <img 
-                className="postImg"
-                src="https://www.teahub.io/photos/full/18-186653_zelda-breath-of-the-wild.jpg" 
-                alt="" 
-            />
+            {post.photo && (
+                <img 
+                    className="postImg"
+                    src={post.photo}
+                    alt="" 
+                />
+            )}
             <div className="postInfo">
                 <div className="postCats">
-                    <span className="postCat">Music</span>
-                    <span className="postCat">Life</span>
+                    {post.categories.map((c) => (
+                        <span className="postCat">{c.name}</span>
+                    ))}
                 </div>
-                <span className="postTitle">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </span>
+                <Link to={`/post/${post._id}`} className='link'>
+                    <span className="postTitle">{post.title}</span>
+                </Link>
                 <hr/>
-                <span className="postDate">1 hour ago</span>
+                <span className="postDate">{new Date(post.createdAt).toDateString()}</span>
             </div>
-            <p className="postDesc">
-                Donec ut ex et felis sodales vulputate. Etiam at quam egestas, vestibulum ex in, tristique turpis. Duis rutrum neque sit amet mattis malesuada. Sed nec arcu eget risus mollis interdum. Phasellus venenatis ullamcorper auctor. Sed eget lobortis risus. Phasellus orci ligula, sollicitudin nec risus in, porttitor sodales dui.
-            </p>
+            <p className="postDesc">{post.desc}</p>
         </div>
     )
 }
