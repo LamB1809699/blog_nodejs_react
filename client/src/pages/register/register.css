@@ -54,3 +54,8 @@
     color: white;
     border-radius: 10px;
 }
+
+.error {
+    color: orangered;
+    margin-top: 10px;
+}
