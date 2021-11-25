@@ -80,3 +80,9 @@
     margin-top: 20px;
     cursor: pointer;
 }
+
+.notification {
+    color: green;
+    text-align: center;
+    margin-top: 20px;
+}
