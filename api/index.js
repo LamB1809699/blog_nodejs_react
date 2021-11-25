@@ -4,6 +4,7 @@ const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const multer = require('multer');
+const path = require('path');
 
 // Require routes
 const authRoute = require('./routes/auth')
@@ -14,6 +15,7 @@ const categoryRoute = require('./routes/categories')
 // Config stuffs
 dotenv.config();                //for env file
 app.use(express.json());        //allow to send json file
+app.use("/images", express.static(path.join(__dirname, "/images"))); //allow to get images path
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true,useUnifiedTopology: true,}).then(console.log('Connected to MongoDB!')).catch(err => console.log(err))
@@ -21,7 +23,7 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true,useUnifiedTopolog
 // Upload image
 const storage = multer.diskStorage({
     destination: (req, file, cb) => { cb (null, 'images') }, 
-    filename: (req, file, cb) => { cb (null, 'myimageofzelda.jpg') }
+    filename: (req, file, cb) => { cb (null, req.body.name) }
 });
 const upload = multer({ storage: storage });
 app.post('/api/upload', upload.single('file'), (req, res) => {
