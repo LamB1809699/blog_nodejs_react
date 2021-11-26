@@ -24,7 +24,6 @@ export default function TopBar() {
                 <ul className = "topList">
                     <li className = "topListItem"><Link to = "/" className = "link">HOME</Link></li>
                     <li className = "topListItem"><Link to = "/" className = "link">ABOUT</Link></li>
-                    <li className = "topListItem"><Link to = "/" className = "link">CONTACT</Link></li>
                     <li className = "topListItem"><Link to = "/write" className = "link">WRITE</Link></li>
                     <li className = "topListItem" onClick = {handleLogout}>
                         {user && "LOGOUT"}
@@ -42,7 +41,6 @@ export default function TopBar() {
                         <li className = "topListItem"><Link to = "/register" className = "link">REGISTER</Link></li>
                     </ul>
                 )}
-                <i className = "topSearchIcon fas fa-search"></i>
             </div>
         </div>
     )
