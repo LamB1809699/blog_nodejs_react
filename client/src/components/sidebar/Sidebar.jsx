@@ -14,29 +14,30 @@ export default function Sidebar() {
         getCats();
     }, [])
     return (
-        <div className="sidebar">
-            <div className="sidebarItem">
-                <span className="sidebarTitle">ABOUT ME</span>
+        <div className="sidebar container rounded align-items-center flex-column">
+            <div className="d-flex align-items-center flex-column">
+                <span className="sidebarTitle h-6 border-top border-bottom border-info text-center">ABOUT ME</span>
                 <img 
                     src="https://avatarfiles.alphacoders.com/125/125140.jpg" 
                     alt="" 
+                    className = "sidebarImg"
                 />
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dictum pulvinar ligula, ac posuere leo bibendum vitae. Mauris sem magna, tristique non lorem at, aliquet hendrerit dui. Mauris turpis dolor, sodales nec ultrices eget, molestie quis risus. Integer ornare ullamcorper vehicula. Morbi aliquam ante ac accumsan dignissim. Suspendisse sagittis urna vel mollis elementum. Sed consectetur congue urna. Nunc consectetur in est sed commodo.
+                <p className = "sidebarDesc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dictum pulvinar ligula, ac posuere leo bibendum vitae. Mauris sem magna, tristique non lorem at, aliquet hendrerit dui. Mauris turpis dolor, sodales nec ultrices eget, molestie quis risus. Integer ornare ullamcorper vehicula. Morbi aliquam ante ac accumsan dignissim. Suspendisse sagittis urna vel mollis elementum. Sed consectetur congue urna.
                 </p>
             </div>
-            <div className="sidebarItem">
-                <span className="sidebarTitle">CATEGORIES</span>
-                <ul className="sidebarList">
+            <div className="d-flex align-items-center flex-column">
+                <span className="sidebarTitle h-6 border-top border-bottom border-info text-center">CATEGORIES</span>
+                <ul className="list-inline">
                     {cats.map((c) => (
                         <Link to={`/?cat=${c.name}`} className="link">
-                            <li className="sidebarListItem">{c.name}</li>
+                            <li className="list-inline-item">{c.name}</li>
                         </Link>
                     ))}
                 </ul>
             </div>
-            <div className="sidebarItem">
-                <span className="sidebarTitle">FOLLOW US</span>
+            <div className="d-flex align-items-center flex-column">
+                <span className="sidebarTitle h-6 border-top border-bottom border-info text-center">FOLLOW US</span>
                 <div className="sidebarSocial">
                     <i className="sidebarIcon fab fa-facebook-square"></i>
                     <i className="sidebarIcon fab fa-twitter-square"></i>

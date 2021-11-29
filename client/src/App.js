@@ -5,6 +5,7 @@ import Settings from './pages/settings/Settings';
 import Home from './pages/home/Home'
 import Single from './pages/single/Single';
 import Write from './pages/write/Write';
+import About from './pages/about/About';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { useContext } from 'react';
 import { Context } from './context/Context';
@@ -21,6 +22,7 @@ function App() {
         <Route path='/write' element={user ? <Write /> : <Register />}/>
         <Route path='/settings' element={user ? <Settings /> : <Register />}/>
         <Route path='/post/:postId' element={<Single />}/>
+        <Route path='/about' element={<About />}/>
       </Routes>
     </Router>
   );

@@ -24,26 +24,32 @@ export default function Login() {
         }
     }
     return (
-        <div className = "login">
-            <span className = "loginTitle">Login</span>
-            <form className = "loginForm" onSubmit = {handleSubmit}>
-                <label>Username</label>
-                <input 
-                    type = "text" 
-                    className = "loginInput" 
-                    placeholder = "Enter your username" 
-                    ref = {userRef}
-                />
-                <label>Password</label>
-                <input 
-                    type = "password" 
-                    className = "loginInput" 
-                    placeholder = "Enter your password" 
-                    ref = {passwordRef}
-                />
-                <button className = "loginButton" type = "submit" disabled = {isFetching}>Login</button>
+        <div className="container-fluid login d-flex align-items-center justify-content-center flex-column">
+            <span className = "display-3">Login</span>
+            <form className = "d-flex flex-column mt-2" onSubmit = {handleSubmit}>
+                <div className = "mt-3">
+                    <label className = "form-label" htmlFor = "usernameInput">Username</label>
+                    <input 
+                        type = "text" 
+                        className = "form-control" 
+                        id = "usernameInput"
+                        placeholder = "Enter your username" 
+                        ref = {userRef}
+                    />
+                </div>
+                <div className = "mt-3">
+                    <label className = "form-label" htmlFor = "passwordInput">Password</label>
+                    <input 
+                        type = "password" 
+                        className = "form-control" 
+                        id = "passwordInput"
+                        placeholder = "Enter your password" 
+                        ref = {passwordRef}
+                    />
+                </div>
+                <button className = "mt-4 rounded-pill loginButton" type = "submit" disabled = {isFetching}>Login</button>
             </form>
-            <button className = "loginRegisterButton">
+            <button className = "rounded loginRegisterButton">
                 <Link to = '/register' className = 'link'>Register</Link>
             </button>
         </div>

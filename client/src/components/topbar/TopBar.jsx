@@ -11,37 +11,49 @@ export default function TopBar() {
     const handleLogout = () => {
         dispatch({ type: "LOGOUT" })
     }
-
     return (
-        <div className = "top">
-            <div className = "topLeft">
-                <i className = "topIcon fab fa-facebook-square"></i>
-                <i className = "topIcon fab fa-twitter-square"></i>
-                <i className = "topIcon fab fa-pinterest-square"></i>
-                <i className = "topIcon fab fa-instagram-square"></i>
-            </div>
-            <div className = "topCenter">
-                <ul className = "topList">
-                    <li className = "topListItem"><Link to = "/" className = "link">HOME</Link></li>
-                    <li className = "topListItem"><Link to = "/" className = "link">ABOUT</Link></li>
-                    <li className = "topListItem"><Link to = "/write" className = "link">WRITE</Link></li>
-                    <li className = "topListItem" onClick = {handleLogout}>
-                        {user && "LOGOUT"}
-                    </li>
-                </ul>
-            </div>
-            <div className = "topRight">
-                { user ? (
-                    <Link to = "/settings">
-                        <img className = "topImg" src = { PF + user.profilePic } alt = "" />
-                    </Link>
-                ) : (
-                    <ul className = "topList">
-                        <li className = "topListItem"><Link to = "/login" className = "link">LOGIN</Link></li>
-                        <li className = "topListItem"><Link to = "/register" className = "link">REGISTER</Link></li>
+        <nav className = "navbar navbar-expand-lg navbar-light bg-light top">
+            <div className = "container-fluid row">
+                <a className = "navbar-brand col-3 col-sm-2 d-flex justify-content-center fs-4" href="#">BLOG PAGE</a>
+                {/* <button className = "navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className = "navbar-toggler-icon"></span>
+                </button> */}
+                <div className = "d-flex justify-content-center col-6 col-sm-7" id="navbarSupportedContent">
+                    <ul className = "navbar-nav mb-2 mb-lg-0 mx-auto topList">
+                        <li className = "nav-item mx-2">
+                            <a className = "nav-link"><Link to = "/" className = "link">HOME</Link></a>
+                            
+                        </li>
+                        <li className = "nav-item mx-2">
+                            <a className = "nav-link"><Link to = "/about" className = "link">ABOUT</Link></a>
+                        </li>
+                        <li className = "nav-item mx-2">
+                            <a className = "nav-link"><Link to = "/write" className = "link">WRITE</Link></a>
+                        </li>
+                        <li className="nav-item mx-2">
+                            <a className = "nav-link" onClick = {handleLogout}>
+                                {user && "LOGOUT"}
+                            </a>
+                        </li>
                     </ul>
-                )}
+                </div>
+                <div className = "navbar-brand col-3 col-sm-2 d-flex justify-content-center">
+                    { user ? (
+                        <Link to = "/settings">
+                            <img className = "rounded-circle topImg" src = { PF + user.profilePic } alt = "" />
+                        </Link>
+                    ) : (
+                        <ul className = "navbar-nav mb-2 mb-lg-0 mx-auto topList">
+                            <li className = "nav-item">
+                                <a className = "nav-link"><Link to = "/login" className = "link">LOGIN</Link></a>
+                            </li>
+                            <li className = "nav-item">
+                                <a className = "nav-link"><Link to = "/register" className = "link">REGISTER</Link></a>
+                            </li>
+                        </ul>
+                    )}
+             </div>
             </div>
-        </div>
+        </nav>
     )
 }

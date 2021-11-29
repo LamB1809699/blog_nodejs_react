@@ -12,7 +12,6 @@ export default function Register() {
     // Handle Submit function
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(true);
         try {
             const res = await axios.post("/auth/register", {
                 username,
@@ -26,36 +25,45 @@ export default function Register() {
     }
 
     return (
-        <div className = "register">
-            <span className = "registerTitle">Register</span>
-            <form className = "registerForm" onSubmit = {handleSubmit}>
-                <label>Username</label>
-                <input 
-                    type = "text" 
-                    className = "registerInput" 
-                    placeholder = "Enter your username" 
-                    onChange = {(e) => setUsername(e.target.value)}
-                />
-                <label>Email</label>
-                <input 
-                    type = "text" 
-                    className = "registerInput" 
-                    placeholder = "Enter your email" 
-                    onChange = {(e) => setEmail(e.target.value)}
-                />
-                <label>Password</label>
-                <input 
-                    type = "password" 
-                    className = "registerInput" 
-                    placeholder = "Enter your password" 
-                    onChange = {(e) => setPassword(e.target.value)}
-                />
-                <button className = "registerButton" type = "submit">Register</button>
+        <div className="container-fluid register d-flex align-items-center justify-content-center flex-column">
+            <span className = "display-3">Register</span>
+            <form className = "d-flex flex-column mt-2" onSubmit = {handleSubmit}>
+                <div className="mt-3">
+                    <label className = "form-label" htmlFor = "usernameInput">Username</label>
+                    <input 
+                        type = "text" 
+                        className = "form-control" 
+                        id = "usernameInput"
+                        placeholder = "Enter your username" 
+                        onChange = {(e) => setUsername(e.target.value)}
+                    />
+                </div>
+                <div className="mt-3">
+                    <label className = "form-label" htmlFor = "emailInput">Email</label>
+                    <input 
+                        type = "text" 
+                        className = "form-control" 
+                        id = "emailInput"
+                        placeholder = "Enter your email" 
+                        onChange = {(e) => setEmail(e.target.value)}
+                    />
+                </div>
+                <div className="mt-3">
+                    <label className = "form-label" htmlFor = "passwordInput">Password</label>
+                    <input 
+                        type = "password" 
+                        className = "form-control"
+                        id = "passwordInput" 
+                        placeholder = "Enter your password" 
+                        onChange = {(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <button className = "mt-4 rounded-pill registerButton" type = "submit">Register</button>
             </form>
-            <button className = "registerLoginButton">
+            <button className = "rounded registerLoginButton">
                 <Link to = '/login' className = 'link'>Login</Link>
             </button>
-            {error && <span className = "error">Something has gone very wrong!!</span>}
+            {error && <span className = "mt-4 alert alert-danger">Something has gone very wrong!!</span>}
         </div>
     )
 }

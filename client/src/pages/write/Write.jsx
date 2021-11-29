@@ -35,14 +35,14 @@ export default function Write() {
         }
     }
     return (
-        <div className = "write">
+        <div className="container d-flex flex-column align-items-center mt-5">
             { file && (
-                <img src = {URL.createObjectURL(file)} alt = "" className = "writeImg" />
+                <img src = {URL.createObjectURL(file)} alt = "" className = "rounded writeImg" />
             )}
             <form action = "" className = "writeForm" onSubmit = {handleSubmit}>
-                <div className = "writeFormGroup">
+                <div className="d-flex align-items-center">
                     <label htmlFor = "fileInput">
-                        <i className = "writeIcon fas fa-plus"></i>
+                        <i className = "writeIcon border border-2 border-primary rounded-circle d-flex align-items-center justify-content-center fas fa-plus"></i>
                     </label>
                     <input 
                         type = "file" 
@@ -53,20 +53,18 @@ export default function Write() {
                     <input 
                         type = "text" 
                         placeholder = "Title" 
-                        className = "writeInput" 
+                        className = "writeInput form-control" 
                         autoFocus = { true } 
                         onChange = { e => setTitle(e.target.value) }
                     />
+                    <button className = "rounded writeSubmit" type = "submit">Publish</button>
                 </div>
-                <div className = "writeFormGroup">
-                    <textarea 
-                        placeholder = "Tell your story..." 
-                        type = "text" 
-                        className = "writeInput writeText"
-                        onChange = { e => setDesc(e.target.value) }
-                    ></textarea>
-                </div>
-                <button className = "writeSubmit" type = "submit">Publish</button>
+                <textarea 
+                    placeholder = "Tell your story..." 
+                    type = "text" 
+                    className = "writeInput writeText form-control"
+                    onChange = { e => setDesc(e.target.value) }
+                ></textarea>
             </form>
         </div>
     )

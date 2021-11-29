@@ -43,17 +43,15 @@ export default function Settings() {
         }
     }
     return (
-        <div className = "settings">
-            <div className = "settingsWrapper">
-                <div className = "settingsTitle">
-                    <span className = "settingsUpdateTitle">Update Your Account</span>
-                </div>
-                <form className = "settingsForm" onSubmit = {handleSubmit}>
-                    <label>Profile Picture</label>
+        <div className="container-fluid row">
+            <div className="col-9 p-5">
+                <span className = "settingsUpdateTitle display-5 mb-2">Update Your Account</span>
+                <form className = "d-flex flex-column" onSubmit = {handleSubmit}>
+                    <label className = "fs-5 mt-3">Profile Picture</label>
                     <div className = "settingsPP">
                         <img src = { file ? URL.createObjectURL(file) : PF + user.profilePic } alt = "" />
                         <label htmlFor = "fileInput">
-                            <i className = "settingsPPIcon far fa-user-circle"></i>
+                            <i className = "rounded-circle d-flex align-items-center justify-content-center settingsPPIcon far fa-user-circle"></i>
                         </label>
                         <input 
                             type = "file" 
@@ -62,28 +60,40 @@ export default function Settings() {
                             onChange = { e => setFile(e.target.files[0]) }
                         />
                     </div>
-                    <label>Username</label>
-                    <input 
-                        type = "text" 
-                        placeholder = { user.username }
-                        onChange = { e => setUsername(e.target.value) }
-                    />
-                    <label>Email</label>
-                    <input 
-                        type = "email" 
-                        placeholder = { user.email }
-                        onChange = { e => setEmail(e.target.value) }
-                    />
-                    <label>Password</label>
-                    <input 
-                        type = "password"
-                        onChange = { e => setPassword(e.target.value) }
-                    />
-                    <button className = "settingsSubmit" type= "submit">Update</button>
-                    { success && <span className = "notification">Profile has been updated!!</span> }
+                    <div className="mt-4">
+                        <label htmlFor = "usernameInput" className = "form-label">Username</label>
+                        <input 
+                            type = "text" 
+                            className = "form-control"
+                            id = "usernameInput"
+                            placeholder = { user.username }
+                            onChange = { e => setUsername(e.target.value) }
+                        />
+                    </div>
+                    <div className="mt-4">
+                        <label htmlFor = "emailInput" className = "form-label">Email</label>
+                        <input 
+                            type = "email" 
+                            className = "form-control"
+                            id = "emailInput"
+                            placeholder = { user.email }
+                            onChange = { e => setEmail(e.target.value) }
+                        />
+                    </div>
+                    <div className="mt-4">
+                        <label htmlFor = "passwordInput" className = "form-label">Password</label>
+                        <input 
+                            type = "password"
+                            className = "form-control"
+                            id = "passwordInput"
+                            onChange = { e => setPassword(e.target.value) }
+                        />
+                    </div>
+                    <button className = "rounded-pill mt-4 settingsSubmit" type= "submit">Update</button>
+                    { success && <span className = "mt-4 text-center notification">Profile has been updated!!</span> }
                 </form>
             </div>
-            <Sidebar/>
+            <div className="col-3"><Sidebar /></div>
         </div>
     )
  }

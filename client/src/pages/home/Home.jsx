@@ -4,7 +4,6 @@ import Header from '../../components/header/Header'
 import Posts from '../../components/posts/Posts'
 import Sidebar from '../../components/sidebar/Sidebar'
 import axios from 'axios'
-import './home.css'
 
 export default function Home() {
     const [posts, setPosts] = useState([]);
@@ -18,12 +17,12 @@ export default function Home() {
         fetchPosts();
     }, [search])
     return (
-        < >
+        <div className = "container-fluid">
             <Header/>
-            <div className="home">
-                <Posts posts = {posts}/>
-                <Sidebar/>
+            <div className="d-flex row">
+                <div className="col-9"><Posts posts = {posts} /></div>
+                <div className="col-3"><Sidebar /></div>
             </div>
-        </>
+        </div>
     )
 }
